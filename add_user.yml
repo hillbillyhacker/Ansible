@@ -1,0 +1,19 @@
+---
+- hosts: all
+  vars_prompt:
+   - name: username_to_add
+     prompt: Username to add?
+     private: no
+   - name: password_to_add
+     prompt: Password to assign? 
+     private: yes
+     encrypt: sha512_crypt
+     confirm: yes
+     salt_size: 8
+  tasks:
+   - name: Add a user to system
+     become: true
+     ansible.builtin.user:
+      name: "{{ username_to_add }}"
+      password: "{{ password_to_add }}"
+      state: present

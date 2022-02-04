@@ -1,0 +1,7 @@
+# Install Podman
+
+---
+  - hosts: relay_nodes
+    tasks:
+      - name: Installing Podman
+        yum: name=podman state=present

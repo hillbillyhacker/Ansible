@@ -1,0 +1,9 @@
+#Pull apache nifi image for podman
+---
+- name: Using Podman collection
+  hosts: relay_nodes
+  tasks:
+    - name: Pull Apache Nifi image
+      containers.podman.podman_image:
+        name: apache/nifi
+        pull: yes
